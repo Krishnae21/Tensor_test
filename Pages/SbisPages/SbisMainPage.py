@@ -13,8 +13,9 @@ class SbisIndexLocators:
     # )
     LOCATOR_DOWNLOAD = (
         By.LINK_TEXT,
-            'Скачать СБИС',
+        "Скачать СБИС",
     )
+
 
 class SbisMainHelper(BasePage):
     def __init__(self, driver):

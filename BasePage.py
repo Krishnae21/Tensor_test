@@ -59,4 +59,3 @@ class BasePage(ABC):
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         return actions.click().perform()
-

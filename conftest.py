@@ -62,15 +62,24 @@ def test_script_2(browser):
     assert test_region.get("name") in sbis_contacts_page.get_title()
     assert sbis_contacts_page.get_parters()
 
+
 def test_script_3(browser):
     sbis_main_page = SbisMainHelper(browser)
     sbis_main_page.go_to_site()
     sbis_main_page.click_download()
-    sbis_download_page = SbisDownloadHelper(browser)
-    sbis_download_page.click_plugin()
-    sbis_download_page.click_windows_link()
-    link = sbis_download_page.get_plugin_download_link()
-    size = sbis_download_page.get_plugin_size()
-    file_size = round(Functions.download_file(link).__sizeof__() / 1048576, 2)
-    assert file_size == size
 
+    # Переход на страницу загрузок
+    sbis_download_page = SbisDownloadHelper(browser)
+    # Нажимаем на плагин
+    sbis_download_page.click_plugin()
+    # Нажимаем на Windows чтобы точно оказаться в нужном месте
+    sbis_download_page.click_windows_link()
+    # Получаем ссылку для загрузки
+    link = sbis_download_page.get_plugin_download_link()
+    # При помощи регулярного выражения парсим размер с сайта
+    size = sbis_download_page.get_plugin_size()
+    # Скачиваем файл и сохраняем в директории проекта
+    # Получаем размер файла, конвертируем в МБ и округляем до 2 чисел после запятой
+    file_size = round(Functions.download_file(link).__sizeof__() / 1048576, 2)
+    # Сравниваем размер с сайта и размер скачанного файла
+    assert file_size == size

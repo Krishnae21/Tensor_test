@@ -6,15 +6,15 @@ import re
 class SbisDownloadLocators:
     LOCATOR_PLUGIN = (
         By.XPATH,
-        '/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[1]/div/div/div/div[3]/div[2]'
+        "/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[1]/div/div/div/div[3]/div[2]",
     )
     LOCATOR_WINDOWS = (
         By.XPATH,
-        '/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/div[1]/div/div[1]/div[1]'
+        "/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/div[1]/div/div[1]/div[1]",
     )
     LOCATOR_DOWNLOAD_LINK = (
         By.XPATH,
-        '/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/a'
+        "/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/a",
     )
 
 
@@ -28,7 +28,9 @@ class SbisDownloadHelper(BasePage):
         return self.action_click(elem)
 
     def get_plugin_download_link(self):
-        return self.find_element(SbisDownloadLocators.LOCATOR_DOWNLOAD_LINK).get_attribute('href')
+        return self.find_element(
+            SbisDownloadLocators.LOCATOR_DOWNLOAD_LINK
+        ).get_attribute("href")
 
     def get_plugin_size(self):
         text = self.find_element(SbisDownloadLocators.LOCATOR_DOWNLOAD_LINK).text
