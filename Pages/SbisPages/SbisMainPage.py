@@ -7,10 +7,6 @@ class SbisIndexLocators:
         By.XPATH,
         '//*[@id="wasaby-content"]/div/div/div[2]/div[1]/div[1]/div[1]/div[2]/ul/li[2]/a',
     )
-    # LOCATOR_FOOTER = (
-    #     By.XPATH,
-    #     '',
-    # )
     LOCATOR_DOWNLOAD = (
         By.LINK_TEXT,
         "Скачать СБИС",

@@ -11,7 +11,7 @@ from TestsConf import computer_region, test_region
 from OtherFunctions import Functions
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def browser():
     options = Options()
     options.add_argument("--start-maximized")
@@ -79,7 +79,7 @@ def test_script_3(browser):
     # При помощи регулярного выражения парсим размер с сайта
     size = sbis_download_page.get_plugin_size()
     # Скачиваем файл и сохраняем в директории проекта
-    # Получаем размер файла, конвертируем в МБ и округляем до 2 чисел после запятой
+    # Получаем размер файла, конвертируем в МБ и задаем точность в 2 числа после запятой
     file_size = round(Functions.download_file(link).__sizeof__() / 1048576, 2)
     # Сравниваем размер с сайта и размер скачанного файла
     assert file_size == size
