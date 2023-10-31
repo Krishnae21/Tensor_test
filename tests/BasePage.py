@@ -1,7 +1,8 @@
+from abc import ABC
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-from abc import ABC
 
 
 class BasePage(ABC):
@@ -55,7 +56,13 @@ class BasePage(ABC):
     def js_click(self, element):
         return self.driver.execute_script("arguments[0].click();", element)
 
-    def action_click(self, element):
+    def move_to_element(self, element):
+        self.visibility_wait(element, 10)
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        return actions.click().perform()
+
+    def visibility_wait(self, element, wait=1):
+        return WebDriverWait(self.driver, wait).until(
+            EC.visibility_of(element),
+            message=f"Reference pattern not found",
+        )

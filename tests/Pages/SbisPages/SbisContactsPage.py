@@ -1,5 +1,6 @@
-from tests.BasePage import BasePage
 from selenium.webdriver.common.by import By
+
+from tests.BasePage import BasePage
 
 
 class SbisContactsLocators:

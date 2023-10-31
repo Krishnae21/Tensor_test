@@ -7,7 +7,7 @@ from Pages.SbisPages.SbisContactsPage import SbisContactsHelper
 from Pages.SbisPages.SbisDownloadPage import SbisDownloadHelper
 from Pages.TensorPages.TensorMainPage import TensorMainHelper
 from Pages.TensorPages.TensorAboutPage import TensorAboutHelper
-from TestsConf import computer_region, test_region, chromedriver_path
+from TestsConf import computer_region, test_region
 from OtherFunctions import Functions
 
 
@@ -71,6 +71,7 @@ def test_script_3(browser):
 
     # Переход на страницу загрузок
     sbis_download_page = SbisDownloadHelper(browser)
+
     # Нажимаем на плагин
     sbis_download_page.click_plugin()
     # Нажимаем на Windows чтобы точно оказаться в нужном месте

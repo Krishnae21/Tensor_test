@@ -1,6 +1,9 @@
-from tests.BasePage import BasePage
-from selenium.webdriver.common.by import By
+import time
 import re
+
+from selenium.webdriver.common.by import By
+
+from tests.BasePage import BasePage
 
 
 class SbisDownloadLocators:
@@ -14,18 +17,22 @@ class SbisDownloadLocators:
     )
     LOCATOR_DOWNLOAD_LINK = (
         By.XPATH,
-        "/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/a",
+        "/html/body/div[1]/div[2]/div[1]/div/div[1]/div/div/div/div[2]/div/div[2]/div/div/div[2]/div[1]/div[2]/div["
+        "2]/div/a",
     )
 
 
 class SbisDownloadHelper(BasePage):
     def click_plugin(self):
+        # Была проблема в интерактивности элемента,
+        # пришлось добавить sleep(1) чтобы подождать отработку наведения мыши в драйвере
         elem = self.find_element(SbisDownloadLocators.LOCATOR_PLUGIN)
-        return self.action_click(elem)
+        self.move_to_element(elem)
+        time.sleep(1)
+        return elem.click()
 
     def click_windows_link(self):
-        elem = self.find_element(SbisDownloadLocators.LOCATOR_WINDOWS)
-        return self.action_click(elem)
+        return self.find_element(SbisDownloadLocators.LOCATOR_WINDOWS).click()
 
     def get_plugin_download_link(self):
         return self.find_element(
