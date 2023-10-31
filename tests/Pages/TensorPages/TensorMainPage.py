@@ -1,6 +1,4 @@
-import time
-
-from BasePage import BasePage
+from tests.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
 
@@ -13,7 +11,6 @@ class TensorMainLocators:
         By.XPATH,
         '//*[@id="container"]/div[1]/div/div[5]/div/div/div[1]/div/p[4]/a',
     )
-    # LOCATOR_MAN_POWER_ABOUT = (By.LINK_TEXT, "Подробнее")
 
 
 class TensorMainHelper(BasePage):

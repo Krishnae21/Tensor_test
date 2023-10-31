@@ -7,7 +7,7 @@ from Pages.SbisPages.SbisContactsPage import SbisContactsHelper
 from Pages.SbisPages.SbisDownloadPage import SbisDownloadHelper
 from Pages.TensorPages.TensorMainPage import TensorMainHelper
 from Pages.TensorPages.TensorAboutPage import TensorAboutHelper
-from TestsConf import computer_region, test_region
+from TestsConf import computer_region, test_region, chromedriver_path
 from OtherFunctions import Functions
 
 
@@ -15,6 +15,7 @@ from OtherFunctions import Functions
 def browser():
     options = Options()
     options.add_argument("--start-maximized")
+    options.add_argument("--disable-infobars")
     driver = Chrome(options)
     yield driver
     driver.quit()

@@ -1,4 +1,4 @@
-from BasePage import BasePage
+from tests.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
 
